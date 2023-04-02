@@ -9,6 +9,8 @@ import * as CryptoJS from 'crypto-js';
 export class TwitterService {
   private oauth: oauth1;
   private token: { key: string; secret: string };
+  private baseUrl = 'http://localhost:3000/twitter/1.1';
+
 
   constructor(private http: HttpClient) {
     this.oauth = new oauth1({
@@ -23,7 +25,7 @@ export class TwitterService {
   }
 
   async postTweet(status: string): Promise<any> {
-    const url = 'https://api.twitter.com/1.1/statuses/update.json';
+    const url = `${this.baseUrl}/statuses/update.json`;
     const requestData = { url, method: 'POST', data: { status } };
     const oauthHeaders = this.oauth.toHeader(this.oauth.authorize(requestData, this.token));
 
