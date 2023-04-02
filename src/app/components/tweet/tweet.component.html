@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Publicar en Twitter</h2>
+  <form (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="status">Estado:</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="status"
+        name="status"
+        id="status"
+        placeholder="Escribe tu tweet"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar Tweet</button>
+  </form>
+</div>
