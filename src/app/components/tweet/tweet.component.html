@@ -1,18 +1,23 @@
 <div class="container">
   <h2>Publicar en Twitter</h2>
-  <form (submit)="onSubmit()">
-    <div class="form-group">
-      <label for="status">Estado:</label>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="status"
-        name="status"
-        id="status"
-        placeholder="Escribe tu tweet"
-        required
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar Tweet</button>
-  </form>
+  <button (click)="postTweets()" class="btn btn-primary mb-3">Publicar tweets</button>
+  <h3>Tweets pendientes</h3>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let tweet of tweets">{{ tweet.tweet }}</li>
+  </ul>
+  <h3 class="mt-3">Tweets publicados</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tweet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let publishedTweet of publishedTweets">
+        <td>{{ publishedTweet.id }}</td>
+        <td>{{ publishedTweet.tweet }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
